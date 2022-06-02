@@ -38,6 +38,11 @@ public class GUIProfessor {
             } catch (Exception e) {
                 System.out.println("Dado inserido incorreto!");
             }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -183,14 +188,14 @@ public class GUIProfessor {
         String nomeProfessor = input.nextLine();
 
         Professor professor = fachadaProfessor.buscarProfessor(nomeProfessor);
-        String sbr = "\n" +
+        ArrayList<Cursos> listaCursos = professor.getCursos();
+
+        StringBuilder sbr = new StringBuilder("\n" +
                 "Nome do professor: " + professor.getNome() + "\n" +
                 "Matricula: " + professor.getMatricula() + "\n" +
                 "Endereço: " + professor.getEndereco().getRua() + ", Número " + professor.getEndereco().getNumero() + "\n" +
-                "Cursos ensinados: " + "\n";
-        for (Cursos cursoAtual: professor.getCursos()) {
-            sbr += cursoAtual + "\n";
-        }
+                "Cursos ensinados: " + "\n");
+        listaCursos.stream().forEach(cursoAtual -> sbr.append(cursoAtual).append("\n"));
 
         System.out.println(sbr);
     }

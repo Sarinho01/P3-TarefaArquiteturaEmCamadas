@@ -36,6 +36,11 @@ public class GUIAluno {
             } catch (Exception e) {
                 System.out.println("Dado inserido incorreto!");
             }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }
